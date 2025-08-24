@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service | SecureConnect Phones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue: #00f3ff;
+      --neon-pink: #ff00ff;
+      --neon-green: #00ff8f;
+      --dark-bg: #0a0a12;
+      --darker-bg: #050508;
+      --text: #e0e0e0;
+      --accent: #1a1a2e;
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.05) 0%, transparent 20%);
+      padding: 20px;
+    }
+
+    .cyber-border {
+      position: fixed;
+      z-index: 1000;
+      background: var(--darker-bg);
+      border: 1px solid var(--neon-blue);
+      box-shadow: 0 0 10px var(--neon-blue);
+    }
+    
+    .border-top {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+    
+    .border-right {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 2px;
+    }
+    
+    .border-bottom {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+    }
+    
+    .border-left {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 2px;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.3;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(10, 10, 18, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--neon-blue);
+      z-index: 999;
+      animation: fadeIn 1s ease forwards;
+      backdrop-filter: blur(5px);
+    }
+
+    header h2 { 
+      font-size: 1.5rem; 
+      margin: 0; 
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-green);
+      text-shadow: 0 0 5px var(--neon-green);
+    }
+    
+    nav a {
+      margin-left: 1.5rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    
+    nav a:hover { 
+      color: var(--neon-blue);
+      text-shadow: 0 0 5px var(--neon-blue);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--neon-blue);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 120px auto 50px;
+      background: rgba(26, 26, 46, 0.7);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--neon-blue);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-green);
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px var(--neon-green);
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-blue);
+      margin: 25px 0 15px;
+      font-size: 1.5rem;
+    }
+
+    p, li {
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      position: relative;
+      padding-left: 10px;
+    }
+
+    li::before {
+      content: "→";
+      color: var(--neon-green);
+      position: absolute;
+      left: -15px;
+    }
+
+    .scanner {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: scan 3s linear infinite;
+      box-shadow: 0 0 15px var(--neon-blue);
+      z-index: 99;
+    }
+
+    @keyframes scan {
+      0% { top: 0%; }
+      100% { top: 100%; }
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark-bg);
+      background-color: var(--neon-blue);
+      border: none;
+      border-radius: 0;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 15px var(--neon-blue);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Orbitron', sans-serif;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      margin-top: 20px;
+    }
+    
+    .back-button:hover {
+      background-color: var(--neon-pink);
+      box-shadow: 0 0 20px var(--neon-pink);
+      transform: translateY(-3px);
+      color: white;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #888;
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--neon-blue);
+      position: relative;
+    }
+    
+    .links a { 
+      color: #888; 
+      text-decoration: none; 
+      margin: 0 15px; 
+      transition: color 0.3s ease; 
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .links a:hover { 
+      color: var(--neon-blue);
+      text-shadow: 0 0 5px var(--neon-blue);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+        margin-top: 100px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      nav {
+        margin-top: 1rem;
+      }
+      
+      nav a {
+        margin: 0 10px;
+      }
+    }
+
+    @keyframes fadeIn { 
+      from { opacity: 0; transform: translateY(20px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+  </style>
+</head>
+<body>
+  <div class="cyber-border border-top"></div>
+  <div class="cyber-border border-right"></div>
+  <div class="cyber-border border-bottom"></div>
+  <div class="cyber-border border-left"></div>
+  
+  <div class="noise-overlay"></div>
+  <div class="scanner"></div>
+
+  <header>
+    <h2>SECURECONNECT</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#devices">Devices</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>TERMS OF SERVICE</h1>
+    
+    <h2>1. ACCEPTANCE OF TERMS</h2>
+    <p>By accessing and using SecureConnect services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
+    
+    <h2>2. SERVICE DESCRIPTION</h2>
+    <p>SecureConnect provides privacy-focused Android devices. Each order receives a randomly selected Android phone from our inventory, which may include various models and specifications.</p>
+    
+    <h2>3. ORDER PROCESS</h2>
+    <p>All orders require a 50% non-refundable deposit. The remaining balance must be paid before shipment. We reserve the right to cancel any order at our discretion.</p>
+    
+    <h2>4. DEVICE SELECTION</h2>
+    <p>Devices are randomly selected from our inventory of Android phones. We do not guarantee specific models, brands, or specifications for any order.</p>
+    
+    <h2>5. PAYMENT</h2>
+    <p>We accept cryptocurrency payments only. All transactions are final with no refunds or exchanges permitted after payment is completed.</p>
+    
+    <h2>6. SHIPPING</h2>
+    <p>Devices are shipped within 5-7 business days after full payment is received. We are not responsible for delays caused by shipping carriers or customs.</p>
+    
+    <h2>7. DEVICE USAGE</h2>
+    <p>Customers are solely responsible for how they use our devices. SecureConnect is not liable for any illegal activities conducted using our products.</p>
+    
+    <h2>8. PRIVACY</h2>
+    <p>We do not store customer information beyond what is necessary to process orders. All communications should be conducted through secure channels.</p>
+    
+    <h2>9. LIMITATION OF LIABILITY</h2>
+    <p>SecureConnect shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our devices or services.</p>
+    
+    <h2>10. CHANGES TO TERMS</h2>
+    <p>We reserve the right to modify these terms at any time. Continued use of our services constitutes acceptance of the modified terms.</p>
+    
+    <a href="index.html" class="back-button">RETURN TO HOME</a>
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="tos.html">Terms of Service</a>
+      <a href="pp.html">Privacy Policy</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+
+    <div style="margin-top: 1.5rem;">&copy; 2025 SECURECONNECT. All rights reserved.</div>
+  </footer>
+</body>
+</html>
