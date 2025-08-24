@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SecureConnect Phones | Premium Burner Devices</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-blue: #00f3ff;
+      --neon-pink: #ff00ff;
+      --neon-green: #00ff8f;
+      --dark-bg: #0a0a12;
+      --darker-bg: #050508;
+      --text: #e0e0e0;
+      --accent: #1a1a2e;
+      --sale-color: #ff2a2a;
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+    
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.05) 0%, transparent 20%);
+    }
+
+    .cyber-border {
+      position: fixed;
+      z-index: 1000;
+      background: var(--darker-bg);
+      border: 1px solid var(--neon-blue);
+      box-shadow: 0 0 10px var(--neon-blue);
+    }
+    
+    .border-top {
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+    }
+    
+    .border-right {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 2px;
+    }
+    
+    .border-bottom {
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+    }
+    
+    .border-left {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 2px;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.3;
+    }
+
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: rgba(10, 10, 18, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--neon-blue);
+      z-index: 999;
+      animation: fadeIn 1s ease forwards;
+      backdrop-filter: blur(5px);
+    }
+
+    header h2 { 
+      font-size: 1.5rem; 
+      margin: 0; 
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-green);
+      text-shadow: 0 0 5px var(--neon-green);
+    }
+    
+    nav a {
+      margin-left: 1.5rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    
+    nav a:hover { 
+      color: var(--neon-blue);
+      text-shadow: 0 0 5px var(--neon-blue);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--neon-blue);
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      padding: 180px 20px 80px;
+      text-align: center;
+      animation: fadeIn 1.2s ease forwards;
+      position: relative;
+    }
+    
+    .hero h1 { 
+      font-size: 3.5rem; 
+      font-weight: 700; 
+      margin-bottom: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    }
+    
+    .hero p { 
+      font-size: 1.2rem; 
+      max-width: 700px; 
+      margin: 0 auto 2rem;
+      color: var(--neon-green);
+    }
+    
+    .button {
+      display: inline-block;
+      padding: 16px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark-bg);
+      background-color: var(--neon-blue);
+      border: none;
+      border-radius: 0;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 15px var(--neon-blue);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Orbitron', sans-serif;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .button:hover {
+      background-color: var(--neon-pink);
+      box-shadow: 0 0 20px var(--neon-pink);
+      transform: translateY(-3px);
+      color: white;
+    }
+    
+    .button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+    
+    .button:hover::before {
+      left: 100%;
+    }
+
+    /* Scanner animation removed */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      animation: fadeIn 1.6s ease forwards;
+    }
+    
+    .feature-card {
+      background: rgba(26, 26, 46, 0.7);
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      cursor: default;
+      border: 1px solid var(--neon-blue);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 243, 255, 0.3);
+      border-color: var(--neon-pink);
+    }
+    
+    .feature-card h3 { 
+      margin-bottom: 1rem; 
+      font-size: 1.4rem;
+      color: var(--neon-green);
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .feature-card p {
+      color: #ccc;
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+      transform: rotate(45deg);
+      transition: 0.5s;
+      z-index: -1;
+    }
+    
+    .feature-card:hover::before {
+      animation: shine 1.5s forwards;
+    }
+    
+    @keyframes shine {
+      0% { top: -50%; left: -50%; }
+      100% { top: 150%; left: 150%; }
+    }
+
+    .pricing-container {
+      text-align: center;
+      margin: 4rem 0;
+      position: relative;
+    }
+    
+    .single-price {
+      background: rgba(26, 26, 46, 0.8);
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      border: 1px solid var(--neon-pink);
+      backdrop-filter: blur(5px);
+    }
+    
+    .price-badge {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: var(--sale-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      transform: rotate(5deg);
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: 0 0 15px var(--sale-color);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: rotate(5deg) scale(1); }
+      50% { transform: rotate(5deg) scale(1.05); }
+      100% { transform: rotate(5deg) scale(1); }
+    }
+    
+    .original-price {
+      text-decoration: line-through;
+      color: #888;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .current-price {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--neon-blue);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .price-description {
+      margin-bottom: 2rem;
+      color: var(--neon-green);
+      font-size: 1.2rem;
+    }
+    
+    .price-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+    
+    .price-features li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      padding-left: 30px;
+    }
+    
+    .price-features li:before {
+      content: "✓";
+      color: var(--neon-green);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+    
+    .payment-method {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 500;
+      border: 1px solid var(--neon-blue);
+    }
+    
+    .payment-method i {
+      margin-right: 8px;
+      font-size: 1.3rem;
+    }
+    
+    .crypto-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      display: inline-block;
+      background-color: #333;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .burner-section {
+      background: rgba(26, 26, 46, 0.5);
+      padding: 80px 20px;
+      margin: 80px 0;
+      border-top: 1px solid var(--neon-blue);
+      border-bottom: 1px solid var(--neon-blue);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .burner-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .burner-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .burner-header h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: var(--neon-green);
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px var(--neon-green);
+    }
+    
+    .burner-header p {
+      font-size: 1.2rem;
+      color: var(--neon-blue);
+    }
+    
+    .burner-info {
+      background: rgba(10, 10, 18, 0.7);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      margin-bottom: 40px;
+      border: 1px solid var(--neon-pink);
+      backdrop-filter: blur(5px);
+    }
+    
+    .burner-info h3 {
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      color: var(--neon-green);
+      border-bottom: 2px solid var(--neon-pink);
+      padding-bottom: 15px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .burner-details {
+      margin-bottom: 30px;
+    }
+    
+    .burner-details h4 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .burner-details ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .burner-details li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 10px;
+    }
+    
+    .burner-details li::before {
+      content: "→";
+      color: var(--neon-green);
+      position: absolute;
+      left: -15px;
+    }
+    
+    .burner-warning {
+      background: rgba(255, 200, 0, 0.1);
+      border-left: 4px solid #ffc107;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 4px;
+      color: #ffcc80;
+    }
+    
+    .burner-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .testimonial {
+      background: rgba(26, 26, 46, 0.7);
+      padding: 3rem;
+      border-radius: 12px;
+      margin: 4rem auto;
+      max-width: 800px;
+      color: #ccc;
+      font-style: italic;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--neon-blue);
+      backdrop-filter: blur(5px);
+    }
+    
+    .testimonial::before {
+      content: "\201C";
+      font-size: 5rem;
+      position: absolute;
+      left: 20px;
+      top: 10px;
+      color: var(--neon-green);
+      font-weight: 700;
+      opacity: 0.3;
+    }
+    
+    .testimonial::after {
+      content: "\201D";
+      font-size: 5rem;
+      position: absolute;
+      right: 20px;
+      bottom: -30px;
+      color: var(--neon-green);
+      font-weight: 700;
+      opacity: 0.3;
+    }
+
+    .faq {
+      background: rgba(26, 26, 46, 0.7);
+      padding: 40px;
+      border-radius: 12px;
+      margin: 4rem auto;
+      max-width: 900px;
+      border: 1px solid var(--neon-pink);
+      backdrop-filter: blur(5px);
+    }
+    
+    .faq h3 {
+      margin-bottom: 2rem;
+      font-weight: 600;
+      color: var(--neon-green);
+      font-size: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .faq p {
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      padding-left: 20px;
+      border-left: 3px solid var(--neon-blue);
+    }
+    
+    .faq strong {
+      color: var(--neon-green);
+    }
+
+    .cta-final {
+      background: rgba(26, 26, 46, 0.7);
+      padding: 50px 40px;
+      border-radius: 12px;
+      margin: 4rem auto;
+      max-width: 800px;
+      text-align: center;
+      border: 1px solid var(--neon-blue);
+      backdrop-filter: blur(5px);
+    }
+    
+    .cta-final h3 {
+      margin-bottom: 1.5rem;
+      color: var(--neon-green);
+      font-size: 2rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    footer {
+      margin-top: 100px;
+      font-size: 0.9rem;
+      color: #888;
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--neon-blue);
+      position: relative;
+    }
+    
+    .links a { 
+      color: #888; 
+      text-decoration: none; 
+      margin: 0 15px; 
+      transition: color 0.3s ease; 
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .links a:hover { 
+      color: var(--neon-blue);
+      text-shadow: 0 0 5px var(--neon-blue);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .features { grid-template-columns: 1fr; }
+      .burner-header h2 { font-size: 2rem; }
+      .burner-info { padding: 25px; }
+      .current-price { font-size: 2.8rem; }
+      .payment-methods { flex-direction: column; align-items: center; }
+      header { flex-direction: column; padding: 1rem; }
+      nav { margin-top: 1rem; }
+      nav a { margin: 0 10px; }
+    }
+
+    @keyframes fadeIn { 
+      from { opacity: 0; transform: translateY(20px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
+
+    /* Matrix rain effect in background */
+    .matrix-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.05;
+    }
+  </style>
+</head>
+<body>
+  <div class="cyber-border border-top"></div>
+  <div class="cyber-border border-right"></div>
+  <div class="cyber-border border-bottom"></div>
+  <div class="cyber-border border-left"></div>
+  
+  <div class="noise-overlay"></div>
+  <!-- Scanner element removed -->
+  
+  <div class="matrix-rain" id="matrixRain"></div>
+
+  <header>
+    <h2>SECURECONNECT</h2>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#devices">Devices</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <!-- Scanner element removed -->
+    <h1>PREMIUM BURNER PHONES</h1>
+    <p>Secure, pre-configured Android devices for privacy-conscious individuals</p>
+    <a href="#order" class="button">BROWSE DEVICES</a>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>Enhanced Privacy</h3>
+      <p>All devices come with pre-configured security settings for maximum anonymity.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Quality Devices</h3>
+      <p>We offer reliable Android phones from trusted brands like Samsung and Redmi.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Fast Delivery</h3>
+      <p>Discreet packaging and quick shipping to protect your privacy.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Secure Payment</h3>
+      <p>Cash or cryptocurrency payments for enhanced privacy.</p>
+    </div>
+  </section>
+
+  <div class="pricing-container">
+    <div class="single-price">
+      <div class="price-badge">SALE</div>
+      <div class="original-price">$899</div>
+      <div class="current-price">$500</div>
+      <div class="price-description">PREMIUM SECURE DEVICE PACKAGE</div>
+      
+      <div class="payment-methods">
+        <div class="payment-method">
+          <i>💵</i> Cash
+        </div>
+        <div class="payment-method">
+          <span class="crypto-icon">B</span> Bitcoin
+        </div>
+        <div class="payment-method">
+          <span class="crypto-icon">E</span> Ethereum
+        </div>
+        <div class="payment-method">
+          <span class="crypto-icon">X</span> XRP
+        </div>
+        <div class="payment-method">
+          <span class="crypto-icon">U</span> USDT
+        </div>
+        <div class="payment-method">
+          <span class="crypto-icon">U</span> USDC
+        </div>
+      </div>
+      
+      <ul class="price-features">
+        <li>High-quality Android device (Samsung, Redmi, or other trusted brand)</li>
+        <li>Complete security configuration and de-Googling</li>
+        <li>Privacy apps pre-installed (Tor Browser, Signal, etc.)</li>
+        <li>Discreet packaging and shipping</li>
+        <li>Device setup guide and security manual</li>
+      </ul>
+      <a href="#order" class="button">ORDER NOW</a>
+    </div>
+  </div>
+
+  <section id="devices" class="burner-section">
+    <div class="burner-container">
+      <div class="burner-header">
+        <h2>OUR DEVICE SELECTION</h2>
+        <p>Choose from our range of secure communication devices</p>
+      </div>
+      
+      <div class="burner-info">
+        <h3>AVAILABLE OPTIONS</h3>
+        
+        <div class="burner-details">
+          <h4>DEVICE BRANDS</h4>
+          <ul>
+            <li>We source quality Android devices from various manufacturers</li>
+            <li>Available brands may include Samsung, Redmi, or other reliable Android manufacturers</li>
+            <li>Specific models vary based on availability and inventory</li>
+            <li><strong>Strictly no iPhones</strong> - Apple devices don't meet our security standards</li>
+          </ul>
+        </div>
+  </section>
+
+  <section class="burner-section" id="order">
+    <div class="burner-container">
+      <div class="burner-header">
+        <h2>ORDER PROCESS & REQUIREMENTS</h2>
+        <p>How to acquire your secure communication device</p>
+      </div>
+      
+      <div class="burner-info">
+        <h3>ORDERING INFORMATION</h3>
+        
+        <div class="burner-details">
+          <h4>PAYMENT METHODS</h4>
+          <ul>
+            <li><strong>Cash:</strong> Local transactions only with proper security precautions</li>
+            <li><strong>Cryptocurrency:</strong> We accept Bitcoin (BTC), Ethereum (ETH), XRP, USDT, and USDC</li>
+            <li>A 50% deposit (non-refundable) is required upfront to begin processing your order</li>
+            <li>Final payment is due before device shipment</li>
+          </ul>
+        </div>
+        
+        <div class="burner-details">
+          <h4>PROCESSING TIME</h4>
+          <p>Please allow 5-7 working days for your device to be prepared and configured before shipping.</p>
+        </div>
+        
+        <div class="burner-details">
+          <h4>SHIPPING & DELIVERY</h4>
+          <ul>
+            <li>All packages are shipped discreetly with no indication of contents</li>
+            <li>Tracking information provided upon shipment</li>
+            <li>International shipping available with additional fees</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="burner-info">
+        <h3>SECURITY FEATURES</h3>
+        
+        <div class="burner-details">
+          <h4>STANDARD CONFIGURATION</h4>
+          <ul>
+            <li><strong>No Google Services:</strong> All devices come with de-Googled firmware</li>
+            <li><strong>Use Tor Browser:</strong> Pre-installed for anonymous browsing</li>
+            <li>Enhanced privacy and security settings pre-configured</li>
+            <li>No bloatware or tracking software included</li>
+            <li>Secure messaging apps pre-installed (Signal, Session, etc.)</li>
+          </ul>
+        </div>
+        
+        <div class="burner-warning">
+          <p><strong>Important:</strong> For optimal security, we recommend using Tor Browser exclusively and avoiding any Google services. Do not log into personal accounts on this device.</p>
+        </div>
+        
+        <div class="burner-details">
+          <h4>USAGE GUIDELINES</h4>
+          <ul>
+            <li>Never connect the device to personal accounts or services</li>
+            <li>Use public WiFi networks rather than personal/home networks</li>
+            <li>Keep the device physically secure when not in use</li>
+            <li>Consider replacing the device every 3-6 months for optimal security</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="burner-cta">
+        <a href="#contact" class="button">PLACE YOUR ORDER</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="testimonial">
+    The device I received was perfect! - a Samsung model that was securely configured. The entire process was smooth and discreet. Highly recommend for anyone needing a separate communication device.
+    <br>— Verified Customer
+  </div>
+
+  <section id="faq" class="faq">
+    <h3>FREQUENTLY ASKED QUESTIONS</h3>
+    
+    <p><strong>Which phone brands do you offer?</strong><br>We source various Android devices based on availability. These may include Samsung, Redmi, or other reliable Android manufacturers. The specific brand and model will depend on current inventory.</p>
+    
+    <p><strong>What payment methods do you accept?</strong><br>We accept cash (for local transactions) or cryptocurrency (Bitcoin, Ethereum, XRP, USDT, or USDC).</p>
+    
+    <p><strong>Are the devices truly new?</strong><br>We offer both brand new (factory sealed) and quality used devices. The condition is clearly stated for each available option.</p>
+    
+    <p><strong>How do I know the device is secure?</strong><br>All devices undergo our security preparation process which includes removing Google services, installing privacy-focused apps, and configuring enhanced security settings.</p>
+  </section>
+
+  <section id="contact" class="cta-final">
+    <h3>READY TO SECURE YOUR COMMUNICATION?</h3>
+    <p>Contact us to discuss available device options and place your order</p>
+    <p>Email: contact@secureconnectphones.com</p>
+    <a href="mailto:contact@secureconnectphones.com" class="button">CONTACT US</a>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="tos.html">Terms of Service</a>
+      <a href="pp.html">Privacy Policy</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div style="margin-top: 1.5rem;">&copy; 2025 SECURECONNECT. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Simple matrix rain effect
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const matrixRain = document.getElementById('matrixRain');
+      
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      matrixRain.appendChild(canvas);
+      
+      const letters = '01010101010101010101010101010101';
+      const fontSize = 12;
+      const columns = canvas.width / fontSize;
+      
+      const drops = [];
+      for(let i = 0; i < columns; i++) {
+        drops[i] = 1;
+      }
+      
+      function draw() {
+        ctx.fillStyle = 'rgba(10, 10, 18, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = '#00ff8f';
+        ctx.font = `${fontSize}px orbitron`;
+        
+        for(let i = 0; i < drops.length; i++) {
+          const text = letters[Math.floor(Math.random() * letters.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+          
+          if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          
+          drops[i]++;
+        }
+      }
+      
+      setInterval(draw, 33);
+      
+      window.addEventListener('resize', function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+    });
+  </script>
+</body>
+</html>
